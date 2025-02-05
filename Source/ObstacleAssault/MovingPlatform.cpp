@@ -28,6 +28,12 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+}
+
+void AMovingPlatform::MovePlatform(float DeltaTime) 
+{
 	// Move platform forward
 		// Get current location
 	FVector CurrentLocation = GetActorLocation();
@@ -50,6 +56,9 @@ void AMovingPlatform::Tick(float DeltaTime)
 		FString Name = GetName();
 		UE_LOG(LogTemp, Display, TEXT("%s Overshoot: %f"), *Name, Overshoot);
 	}
-	
 }
 
+void AMovingPlatform::RotatePlatform(float DeltaTime) 
+{
+	UE_LOG(LogTemp, Display, TEXT("%s Rotating..."), *GetName());
+}
