@@ -18,7 +18,9 @@ void AMovingPlatform::BeginPlay()
 
 	StartLocation = GetActorLocation();
 
-	UE_LOG(LogTemp, Display, TEXT("Configured Moved Distance: %f"), MoveDistance);
+	FString Name = GetName();
+
+	UE_LOG(LogTemp, Display, TEXT("BeginPlay: %s"), *Name);
 }
 
 // Called every frame
@@ -44,7 +46,9 @@ void AMovingPlatform::Tick(float DeltaTime)
 		StartLocation = StartLocation + MoveDirection * MoveDistance;
 		SetActorLocation(StartLocation);
 		PlatformVelocity = -PlatformVelocity;
-		UE_LOG(LogTemp, Display, TEXT("Overshoot: %f"), Overshoot);
+
+		FString Name = GetName();
+		UE_LOG(LogTemp, Display, TEXT("%s Overshoot: %f"), *Name, Overshoot);
 	}
 	
 }
